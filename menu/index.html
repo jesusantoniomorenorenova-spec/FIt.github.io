@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuración inicial - FitBalance</title>
+    <link rel="stylesheet" href="estilos.css" />
+
+    <script>
+      (function () {
+        try {
+          const temaGuardado =
+            localStorage.getItem("modoAparienciaFitBalance") || "neon";
+
+          if (temaGuardado === "oscuro") {
+            document.documentElement.classList.add("modo-oscuro");
+          } else if (temaGuardado === "neon") {
+            document.documentElement.classList.add("modo-neon");
+          }
+        } catch (error) {
+          // Default theme: neon
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="enlace-saltar" href="#contenidoPrincipal">Saltar al contenido</a>
+    <main class="pantalla-onboarding" id="contenidoPrincipal">
+      <section class="tarjeta-onboarding">
+        <header class="encabezado-onboarding">
+          <h1 class="titulo-onboarding">
+            <span class="texto-azul">Fit</span><span class="texto-gris">Balance</span>
+          </h1>
+          <p class="subtitulo-onboarding" id="subtituloPaso">
+            Personaliza tu experiencia inicial
+          </p>
+        </header>
+
+        <div class="progreso-contenedor">
+          <div class="progreso-barra">
+            <div class="progreso-relleno" id="progresoRelleno"></div>
+          </div>
+          <p class="progreso-texto" id="progresoTexto">Paso 1 de 8</p>
+        </div>
+
+        <p id="mensajePaso" class="mensaje-paso" aria-live="polite"></p>
+
+        <!-- PASO 1 -->
+        <section class="paso activo" data-step="1">
+          <h2 class="pregunta">Elige por dónde empezar</h2>
+
+          <p class="aviso-demo" id="avisoDemoMenu">
+            <strong>Versión de demostración:</strong> por ahora solo está disponible
+            el módulo de Dieta. Ejercicio, IA y Descanso se agregarán próximamente.
+          </p>
+
+          <div class="opciones-grid">
+            <button
+              type="button"
+              class="opcion-card opcion-card--proximamente"
+              data-field="objetivo"
+              data-value="ejercicio"
+              data-disponible="false"
+              aria-describedby="avisoDemoMenu"
+            >
+              <span class="etiqueta-proximamente">Próximamente</span>
+              <span class="opcion-titulo">Ejercicio</span>
+              <span class="opcion-descripcion">Rutinas, progreso y actividad física</span>
+            </button>
+
+            <button type="button" class="opcion-card" data-field="objetivo" data-value="dieta" data-disponible="true">
+              <span class="opcion-titulo">Dieta</span>
+              <span class="opcion-descripcion">Comidas, hábitos y seguimiento</span>
+            </button>
+
+            <button
+              type="button"
+              class="opcion-card opcion-card--proximamente"
+              data-field="objetivo"
+              data-value="descanso"
+              data-disponible="false"
+              aria-describedby="avisoDemoMenu"
+            >
+              <span class="etiqueta-proximamente">Próximamente</span>
+              <span class="opcion-titulo">Descanso</span>
+              <span class="opcion-descripcion">Sueño, recuperación y bienestar</span>
+            </button>
+
+            <button
+              type="button"
+              class="opcion-card opcion-card--proximamente"
+              data-field="objetivo"
+              data-value="todo"
+              data-disponible="false"
+              aria-describedby="avisoDemoMenu"
+            >
+              <span class="etiqueta-proximamente">Próximamente</span>
+              <span class="opcion-titulo">Todo</span>
+              <span class="opcion-descripcion">Usar todos los módulos</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- PASO 2 -->
+        <section class="paso" data-step="2">
+          <h2 class="pregunta">¿Cómo quieres usar la app?</h2>
+          <div class="opciones-grid dos-columnas">
+            <button type="button" class="opcion-card" data-field="modo" data-value="ia">
+              <span class="opcion-titulo">Con IA (automático)</span>
+              <span class="opcion-descripcion">Recomendaciones automáticas y experiencia premium</span>
+            </button>
+
+            <button type="button" class="opcion-card" data-field="modo" data-value="manual">
+              <span class="opcion-titulo">Modo manual</span>
+              <span class="opcion-descripcion">Tú controlas cada sección y plan gratis</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- PASO 3 -->
+        <section class="paso" data-step="3">
+          <h2 class="pregunta">¿Cuál es tu edad?</h2>
+          <div class="contenedor-input">
+            <input
+              type="number"
+              id="edad"
+              class="campo-onboarding"
+              placeholder="Ejemplo: 22"
+              min="10"
+              max="100"
+              inputmode="numeric"
+            />
+          </div>
+        </section>
+
+        <!-- PASO 4 -->
+        <section class="paso" data-step="4">
+          <h2 class="pregunta">¿Cuál es tu sexo?</h2>
+          <div class="opciones-grid dos-columnas">
+            <button type="button" class="opcion-card" data-field="sexo" data-value="masculino">
+              <span class="opcion-titulo">Masculino</span>
+            </button>
+
+            <button type="button" class="opcion-card" data-field="sexo" data-value="femenino">
+              <span class="opcion-titulo">Femenino</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- PASO 5 -->
+        <section class="paso" data-step="5">
+          <h2 class="pregunta">¿Cuál es tu altura?</h2>
+          <div class="contenedor-input con-sufijo">
+            <input
+              type="number"
+              id="altura"
+              class="campo-onboarding"
+              placeholder="Ejemplo: 175"
+              min="100"
+              max="250"
+              inputmode="numeric"
+            />
+            <span class="sufijo">cm</span>
+          </div>
+        </section>
+
+        <!-- PASO 6 -->
+        <section class="paso" data-step="6">
+          <h2 class="pregunta">¿Cuál es tu peso actual?</h2>
+          <div class="contenedor-input con-sufijo">
+            <input
+              type="number"
+              id="peso"
+              class="campo-onboarding"
+              placeholder="Ejemplo: 72"
+              min="25"
+              max="300"
+              step="0.1"
+              inputmode="decimal"
+            />
+            <span class="sufijo">kg</span>
+          </div>
+        </section>
+
+        <!-- PASO 7 -->
+        <section class="paso" data-step="7">
+          <h2 class="pregunta">¿Cuál es tu nivel de actividad?</h2>
+          <div class="opciones-grid">
+            <button type="button" class="opcion-card" data-field="actividad" data-value="sedentario">
+              <span class="opcion-titulo">Sedentario</span>
+              <span class="opcion-descripcion">Poca o casi nada de actividad</span>
+            </button>
+
+            <button type="button" class="opcion-card" data-field="actividad" data-value="ligero">
+              <span class="opcion-titulo">Ligero</span>
+              <span class="opcion-descripcion">Actividad ocasional</span>
+            </button>
+
+            <button type="button" class="opcion-card" data-field="actividad" data-value="moderado">
+              <span class="opcion-titulo">Moderado</span>
+              <span class="opcion-descripcion">Actividad frecuente</span>
+            </button>
+
+            <button type="button" class="opcion-card" data-field="actividad" data-value="alto">
+              <span class="opcion-titulo">Alto</span>
+              <span class="opcion-descripcion">Actividad intensa o constante</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- PASO 8 -->
+        <section class="paso" data-step="8">
+          <h2 class="pregunta">Resumen de tu configuración</h2>
+
+          <div class="resumen-card" id="resumenDatos">
+            <!-- Se llena con JS -->
+          </div>
+
+          <p class="texto-ayuda">
+            Si todo está bien, pulsa <strong>Comenzar</strong>.
+          </p>
+        </section>
+
+        <div class="acciones-onboarding">
+          <button type="button" class="boton-secundario" id="botonAnterior">
+            Anterior
+          </button>
+
+          <button type="button" class="boton-principal" id="botonSiguiente">
+            Siguiente
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL PREMIUM -->
+    <div id="modalPremium" class="modal-premium oculto" aria-hidden="true">
+      <div class="modal-premium-fondo" id="cerrarModalPremiumFondo"></div>
+
+      <div class="modal-premium-contenido" role="dialog" aria-modal="true" aria-labelledby="tituloModalPremium">
+        <button type="button" class="boton-cerrar-modal" id="cerrarModalPremium" aria-label="Cerrar">
+          ×
+        </button>
+
+        <div class="insignia-premium">⭐</div>
+
+        <h3 id="tituloModalPremium" class="titulo-modal-premium">Plan Premium</h3>
+        <p class="subtitulo-modal-premium">
+          Disfruta de todas las funciones sin límite
+        </p>
+
+        <div class="lista-beneficios-premium">
+          <div class="beneficio-premium">
+            <span class="punto-beneficio"></span>
+            <p>Recomendaciones automáticas personalizadas</p>
+          </div>
+
+          <div class="beneficio-premium">
+            <span class="punto-beneficio"></span>
+            <p>Resumen inteligente de dieta, ejercicio y sueño</p>
+          </div>
+
+          <div class="beneficio-premium">
+            <span class="punto-beneficio"></span>
+            <p>Insights conectados entre tus hábitos</p>
+          </div>
+
+          <div class="beneficio-premium">
+            <span class="punto-beneficio"></span>
+            <p>Seguimiento central desde la IA principal</p>
+          </div>
+
+          <div class="beneficio-premium">
+            <span class="punto-beneficio"></span>
+            <p>Experiencia más completa y guiada</p>
+          </div>
+        </div>
+
+        <div class="bloque-suscripcion">
+          <p class="titulo-bloque-suscripcion">Elige tu tipo de suscripción</p>
+
+          <div class="opciones-suscripcion">
+            <button type="button" class="opcion-suscripcion" data-periodo="semanal">
+              <span class="titulo-suscripcion">Semanal</span>
+              <span class="descripcion-suscripcion">Acceso corto y flexible</span>
+              <span class="precio-suscripcion">$49 MXN</span>
+            </button>
+
+            <button type="button" class="opcion-suscripcion" data-periodo="mensual">
+              <span class="titulo-suscripcion">Mensual</span>
+              <span class="descripcion-suscripcion">La opción más equilibrada</span>
+              <span class="precio-suscripcion">$149 MXN</span>
+            </button>
+
+            <button type="button" class="opcion-suscripcion" data-periodo="anual">
+              <span class="titulo-suscripcion">Anual</span>
+              <span class="descripcion-suscripcion">Mejor valor a largo plazo</span>
+              <span class="precio-suscripcion">$999 MXN</span>
+            </button>
+          </div>
+
+          <p id="mensajePremium" class="mensaje-modal"></p>
+        </div>
+
+        <div class="acciones-modal-premium">
+          <button type="button" class="boton-principal" id="botonContinuarPremium">
+            Suscribirme al plan premium
+          </button>
+
+          <button type="button" class="boton-secundario boton-secundario-modal" id="botonSeguirManual">
+            Seguir en modo manual
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL PAGO -->
+    <div id="modalPagoPremium" class="modal-premium oculto" aria-hidden="true">
+      <div class="modal-premium-fondo" id="cerrarModalPagoFondo"></div>
+
+      <div class="modal-premium-contenido modal-pago-contenido" role="dialog" aria-modal="true" aria-labelledby="tituloModalPago">
+        <button type="button" class="boton-cerrar-modal" id="cerrarModalPago" aria-label="Cerrar">
+          ×
+        </button>
+
+        <div class="insignia-premium insignia-premium-pago">💳</div>
+
+        <h3 id="tituloModalPago" class="titulo-modal-premium">Pago del Plan Premium</h3>
+        <p class="subtitulo-modal-premium" id="textoResumenPago">
+          Completa el diseño de pago para continuar
+        </p>
+
+        <div class="resumen-pago" id="resumenPagoPeriodo">
+          <!-- se llena con JS -->
+        </div>
+
+        <form id="formularioPagoPremium" class="formulario-pago-premium" novalidate>
+          <div class="grupo-campo-pago">
+            <label for="nombreTitularPago">Nombre del titular</label>
+            <input type="text" id="nombreTitularPago" class="campo-pago" placeholder="Nombre completo" />
+          </div>
+
+          <div class="grupo-campo-pago">
+            <label for="numeroTarjetaPago">Número de tarjeta</label>
+            <input type="text" id="numeroTarjetaPago" class="campo-pago" placeholder="1234 5678 9012 3456" />
+          </div>
+
+          <div class="fila-pago">
+            <div class="grupo-campo-pago">
+              <label for="fechaPago">Vencimiento</label>
+              <input type="text" id="fechaPago" class="campo-pago" placeholder="MM/AA" />
+            </div>
+
+            <div class="grupo-campo-pago">
+              <label for="cvvPago">CVV</label>
+              <input type="password" id="cvvPago" class="campo-pago" placeholder="123" />
+            </div>
+          </div>
+
+          <p class="texto-ayuda-pago">
+            Esta pantalla es solo parte del diseño del prototipo.
+          </p>
+
+          <p id="mensajePagoPremium" class="mensaje-modal"></p>
+
+          <div class="acciones-modal-premium">
+            <button type="submit" class="boton-principal">
+              Confirmar pago
+            </button>
+
+            <button type="button" class="boton-secundario boton-secundario-modal" id="botonCancelarPago">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
