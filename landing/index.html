@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="FitBalance reúne alimentación, ejercicio, descanso y seguimiento corporal en una sola aplicación para ayudarte a equilibrar tus hábitos."
+    />
+    <meta name="theme-color" content="#05070d" />
+    <title>FitBalance — Equilibra tus hábitos</title>
+    <link rel="icon" type="image/png" href="imagenes/logo-ancla.png" />
+    <link rel="stylesheet" href="estilos.css?v=7" />
+  </head>
+
+  <body class="pagina-landing">
+    <a class="enlace-saltar" href="#contenidoPrincipal">Saltar al contenido</a>
+
+    <header class="cabecera-sitio" id="cabeceraSitio">
+      <div class="contenedor cabecera-interior">
+        <a class="marca-sitio" href="#inicio" aria-label="FitBalance, ir al inicio">
+          <picture>
+            <source srcset="imagenes/logo-ancla.webp" type="image/webp" />
+            <img class="logo-marca" src="imagenes/logo-ancla.png" alt="" width="481" height="339" />
+          </picture>
+          <span class="marca-texto"><span class="marca-fit">Fit</span><span class="marca-balance">Balance</span></span>
+        </a>
+
+        <nav class="nav-principal" id="navPrincipal" aria-label="Navegación principal">
+          <a class="nav-enlace activo" href="#inicio">Inicio</a>
+          <a class="nav-enlace" href="#caracteristicas">Características</a>
+          <a class="nav-enlace" href="#vista-previa">Vista previa</a>
+          <a class="nav-enlace" href="#opiniones">Opiniones</a>
+          <a class="nav-enlace" href="#preguntas">Preguntas frecuentes</a>
+          <a class="nav-enlace" href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="acciones-cabecera">
+          <a class="boton boton-primario boton-cabecera" href="#descargar">Descargar app</a>
+          <button class="boton-menu" id="botonMenu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navPrincipal">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="fondo-menu" id="fondoMenu" aria-hidden="true"></div>
+
+    <main id="contenidoPrincipal">
+      <section class="hero" id="inicio">
+        <div class="contenedor hero-interior">
+          <div class="hero-texto">
+            <p class="etiqueta-hero">
+              <span class="punto-estado" aria-hidden="true"></span>
+              Tu bienestar, conectado en un solo lugar
+            </p>
+
+            <h1 class="titulo-hero">
+              Equilibra tus hábitos. Mejora tu progreso con
+              <span class="texto-degradado">FitBalance</span>.
+            </h1>
+
+            <p class="descripcion-hero">
+              FitBalance reúne alimentación, ejercicio, descanso y seguimiento
+              corporal en una sola aplicación para ayudarte a comprender tus
+              hábitos y avanzar hacia tus objetivos.
+            </p>
+
+            <div class="acciones-hero">
+              <a class="boton boton-primario" href="#descargar">
+                Descargar la app
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="boton boton-secundario" href="#caracteristicas">Conocer las funciones</a>
+            </div>
+
+            <ul class="ventajas-hero">
+              <li>
+                <span class="icono-ventaja" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                Todo en un solo lugar
+              </li>
+              <li>
+                <span class="icono-ventaja" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                Información conectada
+              </li>
+              <li>
+                <span class="icono-ventaja" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M4 19h16M6 16l4-5 3 3 5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h3v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Progreso en tiempo real
+              </li>
+              <li>
+                <span class="icono-ventaja" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                </span>
+                Asistente de IA
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-marco">
+              <picture>
+                <source srcset="imagenes/mockup-ia-3d.webp" type="image/webp" />
+                <img
+                  class="hero-imagen"
+                  src="imagenes/mockup-ia-3d.png"
+                  alt="Panel del asistente de IA de FitBalance con el resumen diario, recomendaciones e insights conectados."
+                  width="1000"
+                  height="1000"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion" id="caracteristicas">
+        <div class="contenedor">
+          <div class="encabezado-seccion encabezado-con-arte">
+            <div class="encabezado-texto">
+              <p class="etiqueta-seccion">Características</p>
+              <h2>Herramientas diseñadas para <span class="texto-degradado">mejorar tus hábitos</span></h2>
+              <p>
+                FitBalance organiza las funciones principales de bienestar en una
+                sola aplicación para que puedas registrar información, consultar tu
+                progreso y mantener un mejor control de tus objetivos.
+              </p>
+            </div>
+            <picture>
+              <source srcset="imagenes/grafico-modulos.webp" type="image/webp" />
+              <img
+                class="arte-seccion arte-seccion--modulos"
+                src="imagenes/grafico-modulos.png"
+                alt=""
+                aria-hidden="true"
+                width="888"
+                height="568"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
+
+          <div class="rejilla-caracteristicas">
+            <article class="tarjeta-caracteristica caracteristica--azul">
+              <span class="icono-caracteristica" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M4 19h16M6 16l4-5 3 3 5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M15 7h3v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3>Seguimiento</h3>
+              <p>Consulta tus medidas corporales, observa los cambios registrados y analiza la evolución de tu progreso a lo largo del tiempo.</p>
+            </article>
+
+            <article class="tarjeta-caracteristica caracteristica--morado">
+              <span class="icono-caracteristica" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M6.5 6.5v11M17.5 6.5v11M3 9.5v5M21 9.5v5M6.5 12h11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h3>Ejercicio</h3>
+              <p>Organiza tus rutinas, registra las actividades que realizas y consulta el historial de tus entrenamientos de forma sencilla.</p>
+            </article>
+
+            <article class="tarjeta-caracteristica caracteristica--verde">
+              <span class="icono-caracteristica" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 8c-1.5-2-5-2.5-6.5-.5C3.5 10 5 16 8 18.5c1.2 1 2.4 1 3 0 .4-.7.6-.7 1 0 .6 1 1.8 1 3 0 3-2.5 4.5-8.5 2.5-11C16 5.5 13.5 6 12 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M12 8c0-2 1.2-3.6 3-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h3>Dieta</h3>
+              <p>Registra los alimentos consumidos y lleva un control organizado de calorías, proteínas, carbohidratos, grasas y fibra.</p>
+            </article>
+
+            <article class="tarjeta-caracteristica caracteristica--indigo">
+              <span class="icono-caracteristica" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M17 4v2M20 7h2M18.5 7.5 20 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h3>Descanso</h3>
+              <p>Registra tus horas de sueño y consulta información que te ayude a mantener un equilibrio entre actividad y recuperación.</p>
+            </article>
+
+            <article class="tarjeta-caracteristica caracteristica--morado">
+              <span class="icono-caracteristica" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <rect x="6.2" y="6.2" width="11.6" height="11.6" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M9.4 12h1.5l1-2.3 1.7 4.6 1-2.3h1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.4 3.4v2.8M14.6 3.4v2.8M9.4 17.8v2.8M14.6 17.8v2.8M3.4 9.4h2.8M3.4 14.6h2.8M17.8 9.4h2.8M17.8 14.6h2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h3>Asistente de IA</h3>
+              <p>Analiza la información de tus registros y presenta recomendaciones personalizadas de acuerdo con tus hábitos y objetivos.</p>
+            </article>
+
+            <article class="tarjeta-caracteristica caracteristica--rosa">
+              <span class="icono-caracteristica" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3>Perfil y objetivos</h3>
+              <p>Configura tus datos personales, medidas corporales, nivel de actividad, preferencias y objetivos dentro de la aplicación.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion" id="vista-previa">
+        <div class="contenedor">
+          <div class="encabezado-seccion encabezado-con-arte">
+            <div class="encabezado-texto">
+              <p class="etiqueta-seccion">Vista previa</p>
+              <h2>Conoce todo lo que <span class="texto-degradado">FitBalance puede hacer por ti</span></h2>
+              <p>
+                Inteligencia artificial, alimentación, ejercicio, descanso y
+                seguimiento personal en una sola aplicación. Estas son capturas
+                reales de la interfaz.
+              </p>
+            </div>
+            <picture>
+              <source srcset="imagenes/grafico-cerebro.webp" type="image/webp" />
+              <img
+                class="arte-seccion arte-seccion--cerebro"
+                src="imagenes/grafico-cerebro.png"
+                alt=""
+                aria-hidden="true"
+                width="870"
+                height="869"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
+
+          <div class="lista-vista">
+            <article class="fila-vista">
+              <div class="vista-texto">
+                <p class="etiqueta-vista">Asistente inteligente</p>
+                <h3>Tu progreso, explicado en tiempo real</h3>
+                <p>
+                  El asistente de inteligencia artificial analiza la información
+                  registrada para ofrecerte un resumen claro de tus hábitos.
+                  Consulta datos de alimentación, ejercicio, descanso y seguimiento
+                  corporal para identificar aspectos importantes de tu progreso.
+                </p>
+                <ul class="lista-ventajas">
+                  <li>Resúmenes diarios generados automáticamente</li>
+                  <li>Recomendaciones según tus registros</li>
+                  <li>Insights conectados entre todos tus módulos</li>
+                </ul>
+              </div>
+
+              <a class="vista-media" href="imagenes/captura-ia.png" target="_blank" rel="noopener" aria-label="Abrir la captura del asistente de IA en tamaño completo">
+                <div class="captura-app">
+                  <img
+                    src="imagenes/captura-ia.png"
+                    alt="Vista del asistente de IA de FitBalance con el resumen diario, recomendaciones e insights conectados."
+                    width="1916"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="pie-captura">Ver captura completa</span>
+              </a>
+            </article>
+
+            <article class="fila-vista fila-vista--invertida">
+              <div class="vista-texto">
+                <p class="etiqueta-vista">Resumen</p>
+                <h3>Todo lo importante de tu día, en un vistazo</h3>
+                <p>
+                  Consulta rápidamente la información más importante de tu jornada.
+                  Desde un mismo espacio puedes observar las comidas registradas, los
+                  ejercicios completados, el tiempo de actividad y las horas de
+                  descanso, sin recorrer cada módulo.
+                </p>
+                <ul class="lista-ventajas">
+                  <li>Indicadores diarios de bienestar</li>
+                  <li>Progreso de tu objetivo principal</li>
+                  <li>Acceso rápido a cada módulo</li>
+                </ul>
+              </div>
+
+              <a class="vista-media" href="imagenes/captura-seguimiento.jpg" target="_blank" rel="noopener" aria-label="Abrir la captura del resumen diario en tamaño completo">
+                <div class="captura-app">
+                  <img
+                    src="imagenes/captura-seguimiento.jpg"
+                    alt="Vista del resumen diario de FitBalance con las comidas, las calorías, el ejercicio y las horas de descanso."
+                    width="1600"
+                    height="862"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="pie-captura">Ver captura completa</span>
+              </a>
+            </article>
+
+            <article class="fila-vista">
+              <div class="vista-texto">
+                <p class="etiqueta-vista">Dieta</p>
+                <h3>Controla tu alimentación sin complicaciones</h3>
+                <p>
+                  Registra los alimentos consumidos a lo largo del día y mantén un
+                  mejor control de tu alimentación. Cada registro puede incluir el
+                  nombre del alimento, el tipo de comida, la cantidad, las calorías y
+                  otros datos nutricionales relevantes.
+                </p>
+                <ul class="lista-ventajas">
+                  <li>Registro por comidas y porciones</li>
+                  <li>Conteo de calorías y macronutrientes</li>
+                  <li>Historial organizado por día</li>
+                </ul>
+              </div>
+
+              <a class="vista-media" href="imagenes/captura-dieta.jpg" target="_blank" rel="noopener" aria-label="Abrir la captura del módulo de dieta en tamaño completo">
+                <div class="captura-app">
+                  <img
+                    src="imagenes/captura-dieta.jpg"
+                    alt="Vista del módulo de dieta de FitBalance con el perfil nutricional, el registro de comidas y la ingesta del día."
+                    width="1600"
+                    height="862"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="pie-captura">Ver captura completa</span>
+              </a>
+            </article>
+
+            <article class="fila-vista fila-vista--invertida">
+              <div class="vista-texto">
+                <p class="etiqueta-vista">Ejercicio</p>
+                <h3>Rutinas e historial de entrenamiento</h3>
+                <p>
+                  Registra tus actividades físicas y mantén un historial organizado de
+                  cada entrenamiento. Consulta el tipo de ejercicio, la duración, la
+                  fecha y el progreso alcanzado durante un periodo determinado.
+                </p>
+                <ul class="lista-ventajas">
+                  <li>Registro de rutinas y series</li>
+                  <li>Historial por fecha y grupo muscular</li>
+                  <li>Seguimiento del progreso alcanzado</li>
+                </ul>
+              </div>
+
+              <a class="vista-media" href="imagenes/captura-ejercicio.jpg" target="_blank" rel="noopener" aria-label="Abrir la captura del módulo de ejercicio en tamaño completo">
+                <div class="captura-app">
+                  <img
+                    src="imagenes/captura-ejercicio.jpg"
+                    alt="Vista del módulo de ejercicio de FitBalance con el registro de rutinas y el progreso semanal."
+                    width="1600"
+                    height="862"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="pie-captura">Ver captura completa</span>
+              </a>
+            </article>
+
+            <article class="fila-vista">
+              <div class="vista-texto">
+                <p class="etiqueta-vista">Descanso</p>
+                <h3>Recuperación que también cuenta</h3>
+                <p>
+                  Registra tus horas de sueño y consulta información relacionada con
+                  la recuperación diaria. Mantener estos datos organizados ayuda a
+                  comparar resultados entre distintos días y semanas.
+                </p>
+                <ul class="lista-ventajas">
+                  <li>Registro diario de horas de sueño</li>
+                  <li>Comparativas por día y por semana</li>
+                  <li>Equilibrio entre actividad y recuperación</li>
+                </ul>
+              </div>
+
+              <a class="vista-media" href="imagenes/captura-descanso.jpg" target="_blank" rel="noopener" aria-label="Abrir la captura del módulo de descanso en tamaño completo">
+                <div class="captura-app">
+                  <img
+                    src="imagenes/captura-descanso.jpg"
+                    alt="Vista del módulo de descanso de FitBalance con la alarma inteligente, los sonidos relajantes y el historial."
+                    width="1600"
+                    height="862"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="pie-captura">Ver captura completa</span>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-descarga" id="descargar">
+        <div class="contenedor">
+          <div class="panel-descarga">
+            <div class="descarga-texto">
+              <p class="etiqueta-seccion">Descarga FitBalance</p>
+              <h2>Tu bienestar, en tu bolsillo</h2>
+              <p>
+                Lleva tus registros, tus rutinas y las recomendaciones de la IA a
+                donde vayas. Empieza gratis y descubre todo lo que FitBalance puede
+                hacer por ti.
+              </p>
+
+              <div class="botones-descarga">
+                <button class="boton-tienda" type="button" data-descarga="iOS">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.9-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.3 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2-.8-2-3.6ZM14.2 5.8c.6-.8 1-1.8.9-2.8-.9 0-2 .6-2.7 1.4-.6.7-1 1.7-.9 2.7 1 .1 2-.5 2.7-1.3Z" fill="currentColor"/>
+                  </svg>
+                  <span><small>Descargar en</small><strong>App Store</strong></span>
+                </button>
+
+                <button class="boton-tienda" type="button" data-descarga="Android">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M4 3.5 13.5 12 4 20.5c-.2-.2-.4-.6-.4-1.1V4.6c0-.5.2-.9.4-1.1ZM14.8 13.3l2.5 2.4-9.1 5.1 6.6-7.5Zm0-2.6L8.2 3.2l9.1 5.1-2.5 2.4ZM18.4 9.1l2.4 1.3c.8.5.8 1.7 0 2.2l-2.4 1.3-2.7-2.4 2.7-2.4Z" fill="currentColor"/>
+                  </svg>
+                  <span><small>Disponible en</small><strong>Google Play</strong></span>
+                </button>
+
+                <a class="boton-tienda" href="../login/index.html">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.3 3.4 8.5S14.3 18.1 12 20.5c-2.3-2.4-3.4-5.3-3.4-8.5S9.7 5.9 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                  </svg>
+                  <span><small>Usar desde</small><strong>Web app</strong></span>
+                </a>
+              </div>
+
+              <p class="nota-descarga">Gratis para empezar. Sin tarjeta de crédito.</p>
+            </div>
+
+            <div class="descarga-visual" aria-hidden="true">
+              <div class="telefono">
+                <div class="telefono-pantalla">
+                  <svg class="telefono-logo" viewBox="0 0 48 48" focusable="false">
+                    <path d="M24 4 6 12v12c0 10.5 7.4 17.6 18 20 10.6-2.4 18-9.5 18-20V12L24 4Z" fill="none" stroke="#62d8ff" stroke-width="2.4" stroke-linejoin="round"/>
+                    <path d="M13 24h6l3-7 4 14 3-7h6" fill="none" stroke="#bd5fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <p class="telefono-marca">Fit<span>Balance</span></p>
+                  <div class="telefono-lineas"><span></span><span></span><span></span></div>
+                  <div class="telefono-barras"><span></span><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion seccion--alt" id="opiniones">
+        <div class="contenedor">
+          <div class="encabezado-seccion">
+            <p class="etiqueta-seccion">Opiniones</p>
+            <h2>Lo que dicen quienes ya <span class="texto-degradado">equilibran sus hábitos</span></h2>
+            <p>
+              Personas reales ya organizan su bienestar con FitBalance. Tu
+              opinión nos ayuda a seguir mejorando cada módulo de la aplicación.
+            </p>
+          </div>
+
+          <div class="rejilla-opiniones">
+            <form class="tarjeta-panel formulario-opinion" id="formularioOpinion" novalidate>
+              <h3>Deja tu opinión</h3>
+              <p class="texto-panel">Cuéntanos qué te parece FitBalance. Tu comentario se publica al instante.</p>
+
+              <div class="fila-campos">
+                <div class="grupo-campo">
+                  <label for="nombreOpinion">Nombre</label>
+                  <input class="campo" id="nombreOpinion" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" required />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="correoOpinion">Correo electrónico</label>
+                  <input class="campo" id="correoOpinion" name="correo" type="email" placeholder="ejemplo@correo.com" autocomplete="email" required />
+                </div>
+              </div>
+
+              <fieldset class="grupo-campo grupo-calificacion">
+                <legend>Calificación</legend>
+                <div class="estrellas-entrada">
+                  <input type="radio" id="calificacion5" name="calificacion" value="5" />
+                  <label for="calificacion5" title="5 estrellas"><span aria-hidden="true">★</span><span class="texto-oculto">5 estrellas</span></label>
+                  <input type="radio" id="calificacion4" name="calificacion" value="4" />
+                  <label for="calificacion4" title="4 estrellas"><span aria-hidden="true">★</span><span class="texto-oculto">4 estrellas</span></label>
+                  <input type="radio" id="calificacion3" name="calificacion" value="3" />
+                  <label for="calificacion3" title="3 estrellas"><span aria-hidden="true">★</span><span class="texto-oculto">3 estrellas</span></label>
+                  <input type="radio" id="calificacion2" name="calificacion" value="2" />
+                  <label for="calificacion2" title="2 estrellas"><span aria-hidden="true">★</span><span class="texto-oculto">2 estrellas</span></label>
+                  <input type="radio" id="calificacion1" name="calificacion" value="1" />
+                  <label for="calificacion1" title="1 estrella"><span aria-hidden="true">★</span><span class="texto-oculto">1 estrella</span></label>
+                </div>
+                <p class="ayuda-campo">Selecciona de 1 a 5 estrellas</p>
+              </fieldset>
+
+              <div class="grupo-campo">
+                <label for="textoOpinion">Tu opinión</label>
+                <textarea class="campo campo-area" id="textoOpinion" name="opinion" rows="4" placeholder="Cuéntanos cómo te ayuda FitBalance…" required></textarea>
+              </div>
+
+              <p class="mensaje-formulario" id="mensajeOpinion" aria-live="polite"></p>
+
+              <button class="boton boton-primario" type="submit">Publicar opinión</button>
+            </form>
+
+            <aside class="tarjeta-panel panel-resumen" aria-label="Resumen de opiniones">
+              <div class="resumen-principal">
+                <p class="etiqueta-resumen">Calificación general</p>
+                <p class="promedio-linea">
+                  <span class="promedio" id="promedioOpiniones">4.7</span>
+                  <span class="de-cinco">de 5</span>
+                </p>
+                <div class="estrellas-visual" id="estrellasPromedio" aria-hidden="true"></div>
+                <p class="total-opiniones" id="totalOpiniones">48 opiniones</p>
+              </div>
+
+              <div class="distribucion-opiniones">
+                <h3>Distribución de calificaciones</h3>
+                <div class="fila-distribucion">
+                  <span class="etiqueta-distribucion">5 estrellas</span>
+                  <span class="barra-distribucion"><span class="relleno-distribucion" data-barra="5"></span></span>
+                  <span class="conteo-distribucion" data-conteo="5">37</span>
+                </div>
+                <div class="fila-distribucion">
+                  <span class="etiqueta-distribucion">4 estrellas</span>
+                  <span class="barra-distribucion"><span class="relleno-distribucion" data-barra="4"></span></span>
+                  <span class="conteo-distribucion" data-conteo="4">8</span>
+                </div>
+                <div class="fila-distribucion">
+                  <span class="etiqueta-distribucion">3 estrellas</span>
+                  <span class="barra-distribucion"><span class="relleno-distribucion" data-barra="3"></span></span>
+                  <span class="conteo-distribucion" data-conteo="3">2</span>
+                </div>
+                <div class="fila-distribucion">
+                  <span class="etiqueta-distribucion">2 estrellas</span>
+                  <span class="barra-distribucion"><span class="relleno-distribucion" data-barra="2"></span></span>
+                  <span class="conteo-distribucion" data-conteo="2">0</span>
+                </div>
+                <div class="fila-distribucion">
+                  <span class="etiqueta-distribucion">1 estrella</span>
+                  <span class="barra-distribucion"><span class="relleno-distribucion" data-barra="1"></span></span>
+                  <span class="conteo-distribucion" data-conteo="1">1</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="lista-opiniones" id="listaOpiniones" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="seccion" id="preguntas">
+        <div class="contenedor">
+          <div class="encabezado-seccion encabezado-seccion--centrado">
+            <p class="etiqueta-seccion">Preguntas frecuentes</p>
+            <h2>Resolvemos tus dudas</h2>
+            <p>Lo que más nos preguntan antes de empezar a usar FitBalance.</p>
+          </div>
+
+          <div class="lista-faq">
+            <details>
+              <summary>¿FitBalance es gratis?</summary>
+              <p>Puedes empezar gratis y sin tarjeta de crédito. La aplicación te permite crear tu perfil y registrar tus hábitos sin coste inicial; las funciones avanzadas se incorporarán más adelante.</p>
+            </details>
+
+            <details>
+              <summary>¿Necesito crear una cuenta?</summary>
+              <p>Sí. La cuenta permite asociar tus registros a tu perfil y conservar tu historial. Puedes registrarte con tu correo electrónico o con tu cuenta de Google.</p>
+            </details>
+
+            <details>
+              <summary>¿Cómo calcula las calorías y las recomendaciones?</summary>
+              <p>FitBalance parte de los datos de tu perfil (edad, altura, peso, sexo y nivel de actividad) y los combina con tus registros diarios. El asistente de IA resume esa información y propone recomendaciones ajustadas a tus objetivos.</p>
+            </details>
+
+            <details>
+              <summary>¿Qué dispositivos son compatibles?</summary>
+              <p>La versión web funciona en cualquier navegador moderno de laptop, tableta o celular. Las aplicaciones para iOS y Android están en preparación.</p>
+            </details>
+
+            <details>
+              <summary>¿Puedo usar la aplicación sin conexión?</summary>
+              <p>En esta versión de demostración necesitas conexión para cargar la aplicación. Tus registros de prueba se guardan en el almacenamiento local de tu navegador.</p>
+            </details>
+
+            <details>
+              <summary>¿Qué ocurre con mis datos?</summary>
+              <p>Los datos que introduces en este prototipo permanecen en tu navegador y no se envían a ningún servidor. En la versión final podrás consultar la política de privacidad completa.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion seccion--alt" id="contacto">
+        <div class="contenedor">
+          <div class="encabezado-seccion">
+            <p class="etiqueta-seccion">Contacto</p>
+            <h2>¿Tienes dudas? <span class="texto-degradado">Hablemos</span></h2>
+            <p>
+              Envíanos un mensaje y te responderemos lo más pronto posible.
+              También puedes escribirnos directamente por WhatsApp.
+            </p>
+          </div>
+
+          <div class="rejilla-contacto">
+            <form class="tarjeta-panel formulario-contacto" id="formularioContacto" novalidate>
+              <h3>Formulario de contacto</h3>
+              <p class="texto-panel">Respondemos en horario de atención, de lunes a viernes.</p>
+
+              <div class="fila-campos">
+                <div class="grupo-campo">
+                  <label for="nombreContacto">Nombre completo</label>
+                  <input class="campo" id="nombreContacto" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" required />
+                </div>
+                <div class="grupo-campo">
+                  <label for="correoContacto">Correo electrónico</label>
+                  <input class="campo" id="correoContacto" name="correo" type="email" placeholder="ejemplo@correo.com" autocomplete="email" required />
+                </div>
+              </div>
+
+              <div class="fila-campos">
+                <div class="grupo-campo">
+                  <label for="telefonoContacto">Teléfono (opcional)</label>
+                  <input class="campo" id="telefonoContacto" name="telefono" type="tel" placeholder="+52 000 000 0000" autocomplete="tel" />
+                </div>
+                <div class="grupo-campo">
+                  <label for="asuntoContacto">Asunto</label>
+                  <select class="campo" id="asuntoContacto" name="asunto" required>
+                    <option value="">Selecciona un asunto</option>
+                    <option value="soporte">Soporte técnico</option>
+                    <option value="sugerencias">Sugerencias y comentarios</option>
+                    <option value="alianzas">Alianzas y colaboraciones</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="mensajeContacto">Mensaje</label>
+                <textarea class="campo campo-area" id="mensajeContacto" name="mensaje" rows="5" placeholder="Escribe tu mensaje…" required></textarea>
+              </div>
+
+              <p class="mensaje-formulario" id="mensajeContactoFormulario" aria-live="polite"></p>
+
+              <button class="boton boton-primario" type="submit">Enviar mensaje</button>
+            </form>
+
+            <div class="tarjeta-panel info-contacto">
+              <h3>Información de contacto</h3>
+
+              <ul class="lista-contacto">
+                <li>
+                  <span class="icono-contacto" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-4.3A8.5 8.5 0 1 1 20.5 11.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="M8.5 8.6c.3-.6.7-.6 1-.6h.6c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.1.2-.2.4 0 .6.5.8 1.2 1.4 2 1.8.2.1.4.1.6-.1l.6-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.3.3.3.5v.6c0 .3 0 .7-.6 1-1.5.8-4.5-.3-6.5-2.3-1.3-1.3-2.2-3.2-1.8-4.8Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>WhatsApp</strong>
+                    <a href="https://wa.me/526361145552" target="_blank" rel="noopener noreferrer">+52 636 114 55 52</a>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="icono-contacto" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Correo</strong>
+                    <a href="mailto:hc04.flow@gmail.com">hc04.flow@gmail.com</a>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="icono-contacto" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M6.5 3.5h2l1.5 4-2 1.5a12 12 0 0 0 7 7l1.5-2 4 1.5v2a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Teléfono</strong>
+                    <a href="tel:+526361145552">+52 636 114 55 52</a>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="icono-contacto" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                      <circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Dirección</strong>
+                    <span>Calle 31, Aguas Calientes</span>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="icono-contacto" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Horario de atención</strong>
+                    <span>Lunes a viernes · 9:00 AM – 8:00 PM</span>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="contacto-arte" aria-hidden="true">
+                <picture>
+                  <source srcset="imagenes/logo-ancla.webp" type="image/webp" />
+                  <img
+                    src="imagenes/logo-ancla.png"
+                    alt=""
+                    width="481"
+                    height="339"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pie-sitio">
+      <div class="contenedor">
+        <div class="rejilla-pie">
+          <div class="pie-marca">
+            <a class="marca-sitio" href="#inicio" aria-label="FitBalance, ir al inicio">
+              <picture>
+                <source srcset="imagenes/logo-ancla.webp" type="image/webp" />
+                <img class="logo-marca" src="imagenes/logo-ancla.png" alt="" width="481" height="339" />
+              </picture>
+              <span class="marca-texto"><span class="marca-fit">Fit</span><span class="marca-balance">Balance</span></span>
+            </a>
+            <p>Tu aliado para una vida más saludable, equilibrada y con propósito.</p>
+
+            <div class="redes-sociales">
+              <button class="red-social" type="button" data-red="Facebook" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 8h2.5V4.5H14c-2.5 0-4.5 2-4.5 4.5v2H7V14h2.5v6H13v-6h2.6l.4-3h-3V9c0-.6.4-1 1-1Z" fill="currentColor"/></svg>
+              </button>
+              <button class="red-social" type="button" data-red="Instagram" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+              </button>
+              <button class="red-social" type="button" data-red="X" aria-label="X">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h4.2l4.1 5.6L17 4h3l-6.4 7.4L20.5 20h-4.2l-4.4-6-5 6H4l6.9-8L4 4Z" fill="currentColor"/></svg>
+              </button>
+              <button class="red-social" type="button" data-red="YouTube" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m10.5 9.5 4 2.5-4 2.5v-5Z" fill="currentColor"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <nav class="columna-pie" aria-label="Navegación del sitio">
+            <h3>Navegación</h3>
+            <a href="#inicio">Inicio</a>
+            <a href="#caracteristicas">Características</a>
+            <a href="#vista-previa">Vista previa</a>
+            <a href="#opiniones">Opiniones</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+
+          <div class="columna-pie">
+            <h3>Aplicación</h3>
+            <button type="button" class="enlace-pie" data-descarga="iOS">Descargar iOS</button>
+            <button type="button" class="enlace-pie" data-descarga="Android">Descargar Android</button>
+            <a class="enlace-pie" href="../login/index.html">Web app</a>
+          </div>
+
+          <div class="columna-pie">
+            <h3>Información</h3>
+            <a href="#preguntas">Preguntas frecuentes</a>
+            <a href="#contacto">Centro de ayuda</a>
+            <a href="#contacto">Privacidad</a>
+            <a href="#contacto">Términos de uso</a>
+          </div>
+        </div>
+
+        <div class="pie-inferior">
+          <p>© <span id="anioActual">2026</span> FitBalance. Todos los derechos reservados.</p>
+          <p>Hecho con cuidado para ayudarte a equilibrar tus hábitos.</p>
+          <a class="enlace-arriba" href="#inicio">Volver arriba</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js?v=7"></script>
+  </body>
+</html>
+
