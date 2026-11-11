@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dieta - FitBalance</title>
+
+    <link rel="stylesheet" href="estilos.css" />
+
+    <script>
+      (function () {
+        try {
+          const correo = (localStorage.getItem("correoUsuario") || "").trim().toLowerCase();
+          const usuarios = JSON.parse(localStorage.getItem("fitbalance_usuarios_config") || "{}");
+
+          const temaGuardado =
+            (correo &&
+            usuarios[correo] &&
+            usuarios[correo].ajustes &&
+            usuarios[correo].ajustes.apariencia
+              ? usuarios[correo].ajustes.apariencia.tema
+              : "") ||
+            localStorage.getItem("modoAparienciaFitBalance") ||
+            "neon";
+
+          const html = document.documentElement;
+          html.classList.remove("modo-oscuro", "modo-neon");
+
+          if (temaGuardado === "oscuro") {
+            html.classList.add("modo-oscuro");
+          } else if (temaGuardado === "neon") {
+            html.classList.add("modo-neon");
+          }
+        } catch (error) {
+          // Default theme: neon
+        }
+      })();
+    </script>
+
+    
+  </head>
+  <body>
+    <a class="enlace-saltar" href="#contenidoPrincipal">Saltar al contenido</a>
+    <div class="aplicacion pagina-fija">
+      <div class="overlay-sidebar" id="overlaySidebar" aria-hidden="true"></div>
+      <!-- BARRA LATERAL -->
+      <aside class="barra-lateral" id="menuLateral" aria-label="Navegación principal">
+        <button class="boton-cerrar-lateral" id="botonCerrarLateral" type="button" aria-label="Cerrar menú">✕</button>
+        <div class="marca">
+          <span class="marca-azul">Fit</span><span class="marca-gris">Balance</span>
+        </div>
+
+        <div class="tarjeta-perfil">
+          <div class="contenedor-avatar">
+            <img id="imagenAvatarSidebar" class="imagen-avatar oculto" alt="" />
+            <div class="avatar-relleno avatar-placeholder"></div>
+            <span class="punto-conectado"></span>
+          </div>
+
+          <p id="textoNombreUsuario" class="nombre-usuario"></p>
+          <p id="textoUsuarioActivo" class="correo-usuario"></p>
+          <span id="etiquetaPlanUsuario" class="etiqueta-plan">Plan Gratis</span>
+          <button class="boton-salir-lateral" id="botonSalirLateral" type="button" aria-label="Salir">⏻</button>
+        </div>
+
+        <nav class="menu-navegacion" aria-label="Menú principal">
+          <p class="titulo-menu">DIETA</p>
+
+          <p class="titulo-menu titulo-seccion-pagina">En esta página</p>
+
+          <button class="item-menu" data-seccion="secSeguimientoDieta" type="button">
+            <span class="icono-menu verde">🥗</span>
+            <span>Seguimiento</span>
+          </button>
+
+          <button class="item-menu" data-seccion="secPerfilDieta" type="button">
+            <span class="icono-menu azul">👤</span>
+            <span>Perfil</span>
+          </button>
+
+          <button class="item-menu" data-seccion="secRegistroDieta" type="button">
+            <span class="icono-menu verde">➕</span>
+            <span>Registrar</span>
+          </button>
+
+          <button class="item-menu" data-seccion="secHoyDieta" type="button">
+            <span class="icono-menu morado">📊</span>
+            <span>Hoy</span>
+          </button>
+
+          <button class="item-menu" data-seccion="secTablaDieta" type="button">
+            <span class="icono-menu gris">📋</span>
+            <span>Registro</span>
+          </button>
+
+          <button class="item-menu" data-seccion="secBuscarDieta" type="button">
+            <span class="icono-menu gris">🔍</span>
+            <span>Buscar</span>
+          </button>
+
+          <a href="../ia/index.html" class="item-menu">
+            <span class="icono-menu azul">🤖</span>
+            <span>IA</span>
+          </a>
+
+          <a href="../seguimiento/index.html" class="item-menu">
+            <span class="icono-menu morado">📈</span>
+            <span>Seguimiento</span>
+          </a>
+
+          <a href="../dieta/index.html" class="item-menu activo">
+            <span class="icono-menu verde">🥗</span>
+            <span>Dieta</span>
+          </a>
+
+          <a href="../ejercicio/index.html" class="item-menu">
+            <span class="icono-menu rojo">🏋️</span>
+            <span>Ejercicio</span>
+          </a>
+
+          <a href="../descanso/index.html" class="item-menu">
+            <span class="icono-menu morado">😴</span>
+            <span>Descanso</span>
+          </a>
+
+          <a href="../configuracion/index.html" class="item-menu">
+            <span class="icono-menu gris">⚙️</span>
+            <span>Configuración</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="contenido-principal cargando" id="contenidoPrincipal">
+        <!-- BARRA SUPERIOR -->
+        <header class="barra-superior">
+          <button class="boton-hamburguesa" id="botonHamburguesa" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuLateral">☰</button>
+          <div>
+            <h1 class="titulo-pagina">Dieta</h1>
+            <p class="subtitulo-pagina">Control de alimentos y macros</p>
+          </div>
+
+          <div class="acciones-superiores">
+            <button id="botonCerrarSesion" class="boton-cerrar-sesion" type="button">Salir</button>
+          </div>
+        </header>
+
+        <!-- SEGUIMIENTO DE DIETA -->
+        <section class="tarjeta tarjeta-seguimiento-dieta" id="secSeguimientoDieta">
+          <div class="cabecera-tarjeta">
+            <div>
+              <h2>🥗 Seguimiento de dieta</h2>
+              <p class="texto-ayuda-semanal">
+                Marca tus alimentos del día como hechos o pendientes.
+              </p>
+            </div>
+          </div>
+
+          <div id="contenedorAlimentosSeguimiento"></div>
+        </section>
+
+        <!-- CUADRÍCULA SUPERIOR -->
+        <section class="cuadricula-superior">
+          <!-- PERFIL NUTRICIONAL -->
+          <article class="tarjeta tarjeta-perfil-nutricional" id="secPerfilDieta">
+            <div class="cabecera-tarjeta">
+              <h2>Tu Perfil Nutricional</h2>
+              <button id="botonEditarPerfilNutricional" class="enlace-accion" type="button">
+                Editar
+              </button>
+            </div>
+
+            <!-- VISTA NORMAL -->
+            <div id="vistaPerfilNutricional">
+              <div class="lista-datos-perfil">
+                <div class="fila-dato">
+                  <span>Edad</span>
+                  <strong id="textoEdadPerfil">—</strong>
+                </div>
+
+                <div class="fila-dato">
+                  <span>Altura</span>
+                  <strong id="textoAlturaPerfil">—</strong>
+                </div>
+
+                <div class="fila-dato">
+                  <span>Sexo</span>
+                  <strong id="textoSexoPerfil">—</strong>
+                </div>
+
+                <div class="fila-dato">
+                  <span>Peso inicial</span>
+                  <strong id="textoPesoInicialPerfil">—</strong>
+                </div>
+
+                <div class="fila-dato">
+                  <span>Peso actual</span>
+                  <strong id="textoPesoActualPerfil">—</strong>
+                </div>
+
+                <div class="fila-dato">
+                  <span>Peso objetivo</span>
+                  <strong id="textoPesoObjetivoPerfil">—</strong>
+                </div>
+
+                <div class="fila-dato">
+                  <span>Nivel de actividad</span>
+                  <strong id="textoActividadPerfil">—</strong>
+                </div>
+
+                <div class="fila-dato">
+                  <span>Objetivo</span>
+                  <strong id="textoObjetivoPerfil">—</strong>
+                </div>
+              </div>
+
+              <!-- MEDIDOR -->
+              <div class="bloque-medidor-objetivo">
+                <div class="encabezado-medidor">
+                  <h3>Progreso del objetivo</h3>
+                </div>
+
+                <div class="contenedor-medidor">
+                  <svg
+                    class="grafico-medidor"
+                    viewBox="0 0 300 180"
+                    aria-label="Medidor de progreso del objetivo"
+                  >
+                    <path
+                      id="arcoFondoObjetivo"
+                      class="arco-fondo"
+                      d="M 30 150 A 120 120 0 0 1 270 150"
+                    ></path>
+
+                    <path
+                      id="arcoProgresoObjetivo"
+                      class="arco-progreso"
+                      d="M 30 150 A 120 120 0 0 1 270 150"
+                    ></path>
+                  </svg>
+
+                  <div class="contenido-medidor">
+                    <div class="icono-medidor"></div>
+
+                    <div id="textoPorcentajeObjetivo" class="texto-porcentaje-objetivo">
+                      0<span>%</span>
+                    </div>
+
+                    <p id="textoResumenObjetivo" class="texto-resumen-objetivo">
+                      0 / 0 kg
+                    </p>
+                  </div>
+
+                  <div class="extremos-medidor">
+                    <span id="textoExtremoIzquierdoMedidor" class="texto-extremo-izquierdo">0 kg</span>
+                    <span id="textoExtremoDerechoMedidor" class="texto-extremo-derecho">0 kg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FORMULARIO EDITAR PERFIL -->
+            <form id="formularioPerfilNutricional" class="formulario-perfil-nutricional oculto" novalidate>
+              <div class="fila-campos">
+                <div class="grupo-campo">
+                  <label for="inputEdadPerfil">Edad</label>
+                  <input type="number" id="inputEdadPerfil" inputmode="numeric" class="campo-formulario" min="1" placeholder="24" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="inputAlturaPerfil">Altura (cm)</label>
+                  <input type="number" id="inputAlturaPerfil" inputmode="numeric" class="campo-formulario" min="1" placeholder="173" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="inputSexoPerfil">Sexo</label>
+                  <select id="inputSexoPerfil" class="campo-formulario">
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                  </select>
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="inputObjetivoPerfil">Objetivo</label>
+                  <select id="inputObjetivoPerfil" class="campo-formulario">
+                    <option value="Pérdida de peso">Pérdida de peso</option>
+                    <option value="Ganancia muscular">Ganancia muscular</option>
+                    <option value="Mantenimiento">Mantenimiento</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="fila-campos fila-campos-tres">
+                <div class="grupo-campo">
+                  <label for="inputPesoInicialPerfil">Peso inicial (kg)</label>
+                  <input type="number" step="0.1" min="0.1" inputmode="decimal" id="inputPesoInicialPerfil" class="campo-formulario" placeholder="71.5" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="inputPesoActualPerfil">Peso actual (kg)</label>
+                  <input type="number" step="0.1" min="0.1" inputmode="decimal" id="inputPesoActualPerfil" class="campo-formulario" placeholder="70.0" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="inputPesoObjetivoPerfil">Peso objetivo (kg)</label>
+                  <input type="number" step="0.1" min="0.1" inputmode="decimal" id="inputPesoObjetivoPerfil" class="campo-formulario" placeholder="62.1" />
+                </div>
+              </div>
+
+              <div class="fila-campos fila-campos-tres">
+                <div class="grupo-campo">
+                  <label for="inputActividadPerfil">Nivel de actividad</label>
+                  <select id="inputActividadPerfil" class="campo-formulario">
+                    <option value="Sedentario">Sedentario</option>
+                    <option value="Ligero">Ligero</option>
+                    <option value="Moderado">Moderado</option>
+                    <option value="Alto">Alto</option>
+                  </select>
+                </div>
+              </div>
+
+              <p id="mensajePerfilNutricional" class="mensaje-formulario" aria-live="polite"></p>
+
+              <div class="acciones-formulario-perfil">
+                <button type="submit" class="boton-primario">Guardar cambios</button>
+                <button type="button" id="botonCancelarEdicionPerfil" class="boton-secundario">
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </article>
+
+          <!-- REGISTRAR COMIDA -->
+          <article class="tarjeta tarjeta-registro-comida" id="secRegistroDieta">
+            <div class="cabecera-tarjeta">
+              <h2>Registrar comida</h2>
+              <button type="button" class="boton-texto" id="botonIrABuscar">🔍 Buscar alimento</button>
+            </div>
+
+            <form id="formularioComida" class="formulario-comida" novalidate>
+              <div class="grupo-campo grupo-campo-con-lupa">
+                <label for="nombreComida">Nombre del alimento</label>
+                <div class="contenedor-input-con-lupa">
+                  <input type="text" id="nombreComida" class="campo-formulario" placeholder="Ej. Pechuga con arroz" />
+                  <button type="button" id="botonLupaBuscador" class="boton-lupa-formulario" title="Buscar en catálogo">🔍</button>
+                </div>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="tipoComida">Tipo de comida</label>
+                <select id="tipoComida" class="campo-formulario">
+                  <option value="desayuno">Desayuno</option>
+                  <option value="colacion_manana">Media mañana</option>
+                  <option value="comida">Comida</option>
+                  <option value="colacion_tarde">Merienda</option>
+                  <option value="cena">Cena</option>
+                  <option value="colacion_noche">Snack noche</option>
+                </select>
+              </div>
+
+              <div class="fila-campos">
+                <div class="grupo-campo">
+                  <label for="diaSemanaComida">Día de la semana</label>
+                  <select id="diaSemanaComida" class="campo-formulario">
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miercoles">Miércoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                    <option value="sabado">Sábado</option>
+                    <option value="domingo">Domingo</option>
+                  </select>
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="horaComida">Hora</label>
+                  <input type="time" id="horaComida" class="campo-formulario" />
+                </div>
+              </div>
+
+              <div class="fila-campos">
+                <div class="grupo-campo">
+                  <label for="caloriasComida">Kcal</label>
+                  <input type="number" step="0.1" min="0" inputmode="decimal" id="caloriasComida" class="campo-formulario" placeholder="350.5" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="categoriaComida">Categoría</label>
+                  <select id="categoriaComida" class="campo-formulario">
+                    <option value="Proteína">Proteína</option>
+                    <option value="Carbohidrato">Carbohidrato</option>
+                    <option value="Grasa saludable">Grasa saludable</option>
+                    <option value="Verdura">Verdura</option>
+                    <option value="Fruta">Fruta</option>
+                    <option value="Bebida">Bebida</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="fila-campos fila-campos-tres">
+                <div class="grupo-campo">
+                  <label for="proteinasComida">Proteínas (g)</label>
+                  <input type="number" step="0.1" min="0" inputmode="decimal" id="proteinasComida" class="campo-formulario" placeholder="25.5" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="carbohidratosComida">Carbos (g)</label>
+                  <input type="number" step="0.1" min="0" inputmode="decimal" id="carbohidratosComida" class="campo-formulario" placeholder="40.5" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="grasasComida">Grasas (g)</label>
+                  <input type="number" step="0.1" min="0" inputmode="decimal" id="grasasComida" class="campo-formulario" placeholder="10.5" />
+                </div>
+              </div>
+
+              <div class="fila-campos fila-campos-tres">
+                <div class="grupo-campo">
+                  <label for="fibraComida">Fibra (g)</label>
+                  <input type="number" step="0.1" min="0" inputmode="decimal" id="fibraComida" class="campo-formulario" placeholder="5.5" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="cantidadComida">Cantidad</label>
+                  <input type="number" step="0.1" min="0.1" inputmode="decimal" id="cantidadComida" class="campo-formulario" placeholder="1.5" />
+                </div>
+
+                <div class="grupo-campo">
+                  <label for="unidadComida">Unidad</label>
+                  <select id="unidadComida" class="campo-formulario">
+                    <option value="Porción">Porción</option>
+                    <option value="g">g</option>
+                    <option value="ml">ml</option>
+                    <option value="oz">oz</option>
+                    <option value="pieza">pieza</option>
+                  </select>
+                </div>
+              </div>
+
+              <p id="mensajeFormularioComida" class="mensaje-formulario" aria-live="polite"></p>
+
+              <div class="acciones-formulario-comida">
+                <button id="botonGuardarComida" type="submit" class="boton-primario">
+                  Añadir alimento
+                </button>
+                <button id="botonCancelarEdicionComida" type="button" class="boton-secundario oculto">
+                  Cancelar edición
+                </button>
+              </div>
+            </form>
+          </article>
+
+          <!-- INGESTA DE HOY -->
+          <article class="tarjeta tarjeta-ingesta" id="secHoyDieta">
+            <div class="cabecera-tarjeta">
+              <h2>Ingesta de hoy</h2>
+            </div>
+
+            <div class="resumen-macros">
+              <div class="mini-tarjeta mini-tarjeta-azul">
+                <span class="mini-titulo">Calorías</span>
+                <strong id="textoCaloriasConsumidas">0</strong>
+                <small id="textoMetaCalorias">/ 0 kcal</small>
+              </div>
+
+              <div class="mini-tarjeta mini-tarjeta-verde">
+                <span class="mini-titulo">Proteínas</span>
+                <strong id="textoProteinasConsumidas">0</strong>
+                <small id="textoMetaProteinas">/ 0 g</small>
+              </div>
+            </div>
+
+            <div class="lista-macros">
+              <div class="fila-macro">
+                <div class="texto-macro">
+                  <span>Carbohidratos</span>
+                  <span id="textoCarbohidratosMacro">0 g / 0 g</span>
+                </div>
+                <div class="barra-progreso">
+                  <div id="barraCarbohidratos" class="relleno-barra naranja"></div>
+                </div>
+              </div>
+
+              <div class="fila-macro">
+                <div class="texto-macro">
+                  <span>Proteínas</span>
+                  <span id="textoProteinasMacro">0 g / 0 g</span>
+                </div>
+                <div class="barra-progreso">
+                  <div id="barraProteinas" class="relleno-barra verde"></div>
+                </div>
+              </div>
+
+              <div class="fila-macro">
+                <div class="texto-macro">
+                  <span>Grasas</span>
+                  <span id="textoGrasasMacro">0 g / 0 g</span>
+                </div>
+                <div class="barra-progreso">
+                  <div id="barraGrasas" class="relleno-barra azul"></div>
+                </div>
+              </div>
+
+              <div class="fila-macro">
+                <div class="texto-macro">
+                  <span>Fibra</span>
+                  <span id="textoFibraMacro">0 g / 0 g</span>
+                </div>
+                <div class="barra-progreso">
+                  <div id="barraFibra" class="relleno-barra morado"></div>
+                </div>
+              </div>
+            </div>
+
+            <p id="textoDiaResumen" class="texto-dia-resumen"></p>
+            <div id="resumenFaltanteHoy" class="resumen-faltante-hoy"></div>
+          </article>
+        </section>
+
+        <!-- REGISTRO -->
+        <section class="tarjeta tarjeta-registro-dia" id="secTablaDieta">
+          <div class="cabecera-tarjeta">
+            <h2>Registro de comidas</h2>
+
+            <div class="acciones-principales">
+              <button id="botonGenerarDietaPerfil" class="boton-primario boton-generar-plan" type="button">
+                Generar dieta según perfil
+              </button>
+              <button id="botonImprimirRegistro" class="boton-secundario" type="button">
+                Imprimir registro
+              </button>
+              <button id="botonCompartirRegistro" class="boton-primario boton-compartir-plan" type="button">
+                Compartir PDF
+              </button>
+            </div>
+
+            <p id="mensajeGeneracionDieta" class="mensaje-generacion-dieta" aria-live="polite"></p>
+
+            <div class="acciones-secundarias">
+              <button id="botonFiltrarHoy" class="boton-texto" type="button">Mostrar todas</button>
+              <button id="botonLimpiarRegistro" class="boton-texto rojo-texto" type="button">Limpiar</button>
+            </div>
+          </div>
+
+          <div class="contenedor-tabla">
+            <table class="tabla-registro">
+              <thead>
+                <tr>
+                  <th>Alimento</th>
+                  <th>Día</th>
+                  <th>Tipo</th>
+                  <th>Categoría</th>
+                  <th>Cantidad</th>
+                  <th>Unidad</th>
+                  <th>Kcal</th>
+                  <th>Proteínas</th>
+                  <th>Carbos</th>
+                  <th>Grasas</th>
+                  <th>Fibra</th>
+                  <th>Hora</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody id="cuerpoTablaComidas"></tbody>
+            </table>
+          </div>
+
+          <div id="listaComidasMovil" class="lista-comidas-movil" aria-live="polite"></div>
+        </section>
+
+        <!-- BUSCADOR DE ALIMENTOS -->
+          <article class="tarjeta tarjeta-buscador-alimentos" id="secBuscarDieta">
+            <div class="cabecera-tarjeta">
+              <h2>Buscar alimento o receta</h2>
+            </div>
+            <div class="contenedor-buscador-alimentos">
+              <span class="icono-buscar-alimentos">🔍</span>
+              <input type="text" id="buscadorAlimentos" class="campo-formulario campo-buscar-alimentos" placeholder="Buscar alimento o receta..." />
+              <button type="button" id="botonEscanear" class="boton-escanear-alimentos" title="Escanear">📷</button>
+            </div>
+            <div id="resultadosBusqueda" class="resultados-busqueda-alimentos oculto"></div>
+          </article>
+
+          <!-- VISTA DETALLE RECETA -->
+          <div id="vistaDetalleReceta" class="vista-detalle-receta oculto"></div>
+      </main>
+    </div>
+
+    <!-- BARRA INFERIOR MÓVIL -->
+    <nav class="barra-inferior" aria-label="Acceso rápido">
+      <a href="../ia/index.html" class="item-inferior">
+        <span class="icono-inferior">🏠</span>
+        <span>Inicio</span>
+      </a>
+      <a href="../ejercicio/index.html" class="item-inferior">
+        <span class="icono-inferior">🏋️</span>
+        <span>Ejercicio</span>
+      </a>
+      <a href="../dieta/index.html" class="item-inferior activo" aria-current="page">
+        <span class="icono-inferior">🍴</span>
+        <span>Dieta</span>
+      </a>
+      <button class="item-inferior" id="botonMasInferior" type="button" aria-label="Más opciones">
+        <span class="icono-inferior">⋯</span>
+        <span>Más</span>
+      </button>
+    </nav>
+
+    <!-- PANTALLA MÁS (móvil) -->
+    <div class="panel-mas" id="panelMas" role="dialog" aria-modal="true" aria-labelledby="tituloPanelMas">
+      <div class="panel-mas-cabecera">
+        <h2 class="panel-mas-titulo" id="tituloPanelMas">Más opciones</h2>
+        <button class="boton-cerrar-panel" id="botonCerrarMas" type="button" aria-label="Cerrar menú">×</button>
+      </div>
+
+      <div class="perfil-panel-mas">
+        <div class="avatar-panel-mas" id="avatarPanelMas">F</div>
+        <div class="datos-panel-mas">
+          <p class="nombre-panel-mas" id="nombrePanelMas">FitBalance</p>
+          <p class="correo-panel-mas" id="correoPanelMas">Sin sesión</p>
+          <span class="etiqueta-plan" id="planPanelMas">Plan Gratis</span>
+        </div>
+      </div>
+
+      <p class="grupo-panel-mas">Secciones de dieta</p>
+
+      <button class="opcion-mas" data-seccion="secPerfilDieta" type="button">
+        <span class="icono-menu azul">P</span>
+        <span>Perfil<small>Datos, objetivo y calorías.</small></span>
+      </button>
+      <button class="opcion-mas" data-seccion="secRegistroDieta" type="button">
+        <span class="icono-menu verde">R</span>
+        <span>Registrar<small>Añade una comida al día.</small></span>
+      </button>
+      <button class="opcion-mas" data-seccion="secHoyDieta" type="button">
+        <span class="icono-menu morado">H</span>
+        <span>Hoy<small>Resumen de macros del día.</small></span>
+      </button>
+      <button class="opcion-mas" data-seccion="secTablaDieta" type="button">
+        <span class="icono-menu gris">G</span>
+        <span>Registro<small>Todas las comidas guardadas.</small></span>
+      </button>
+      <button class="opcion-mas" data-seccion="secSeguimientoDieta" type="button">
+        <span class="icono-menu verde">D</span>
+        <span>Seguimiento<small>Marca alimentos hechos.</small></span>
+      </button>
+      <button class="opcion-mas" data-seccion="secBuscarDieta" type="button">
+        <span class="icono-menu gris">B</span>
+        <span>Buscar<small>Catálogo de alimentos y recetas.</small></span>
+      </button>
+
+      <p class="grupo-panel-mas">Otras secciones</p>
+
+      <a class="opcion-mas" href="../ia/index.html">
+        <span class="icono-menu azul">IA</span>
+        <span>IA<small>Preguntas y consejos.</small></span>
+      </a>
+      <a class="opcion-mas" href="../seguimiento/index.html">
+        <span class="icono-menu morado">SG</span>
+        <span>Seguimiento general<small>Historial y progreso.</small></span>
+      </a>
+      <a class="opcion-mas" href="../ejercicio/index.html">
+        <span class="icono-menu rojo">EJ</span>
+        <span>Ejercicio<small>Entrenamientos y rutinas.</small></span>
+      </a>
+      <a class="opcion-mas" href="../descanso/index.html">
+        <span class="icono-menu morado">DS</span>
+        <span>Descanso<small>Sueño y recuperación.</small></span>
+      </a>
+      <a class="opcion-mas" href="../configuracion/index.html">
+        <span class="icono-menu gris">CF</span>
+        <span>Configuración<small>Perfil, tema y cuenta.</small></span>
+      </a>
+
+      <div class="acciones-panel-mas">
+        <button class="boton-secundario" data-seccion="secPerfilDieta" type="button">Editar perfil</button>
+        <button class="boton-texto rojo-texto" id="botonCerrarSesionMas" type="button">Cerrar sesión</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
+    <script>
+      (function () {
+        const app = document.querySelector('.aplicacion');
+        const hamburguesa = document.getElementById('botonHamburguesa');
+        const overlay = document.getElementById('overlaySidebar');
+        const panelMas = document.getElementById('panelMas');
+
+        function abrirSidebar(abrir) {
+          app?.classList.toggle('sidebar-abierta', abrir);
+          hamburguesa?.setAttribute('aria-expanded', String(abrir));
+          if (overlay) overlay.setAttribute('aria-hidden', String(!abrir));
+          if (abrir) {
+            document.body.classList.add('menu-abierto');
+          } else if (!panelMas?.classList.contains('abierto')) {
+            document.body.classList.remove('menu-abierto');
+          }
+        }
+
+        function abrirPanelMas(abrir) {
+          panelMas?.classList.toggle('abierto', abrir);
+          if (panelMas) panelMas.setAttribute('aria-hidden', String(!abrir));
+          if (abrir) {
+            document.body.classList.add('menu-abierto');
+            panelMas?.querySelector('button, a')?.focus();
+          } else if (!app?.classList.contains('sidebar-abierta')) {
+            document.body.classList.remove('menu-abierto');
+          }
+        }
+
+        hamburguesa?.addEventListener('click', function () {
+          abrirSidebar(!app?.classList.contains('sidebar-abierta'));
+        });
+        overlay?.addEventListener('click', function () { abrirSidebar(false); });
+        document.getElementById('botonCerrarLateral')?.addEventListener('click', function () { abrirSidebar(false); });
+        document.getElementById('botonSalirLateral')?.addEventListener('click', function () {
+          document.getElementById('botonCerrarSesion')?.click();
+        });
+
+        document.getElementById('botonMasInferior')?.addEventListener('click', function () {
+          abrirPanelMas(true);
+        });
+        document.getElementById('botonCerrarMas')?.addEventListener('click', function () {
+          abrirPanelMas(false);
+        });
+        document.getElementById('botonCerrarSesionMas')?.addEventListener('click', function () {
+          abrirPanelMas(false);
+          document.getElementById('botonCerrarSesion')?.click();
+        });
+
+        document.addEventListener('keydown', function (evento) {
+          if (evento.key !== 'Escape') return;
+          if (panelMas?.classList.contains('abierto')) abrirPanelMas(false);
+          if (app?.classList.contains('sidebar-abierta')) abrirSidebar(false);
+        });
+
+        document.querySelectorAll('[data-seccion]').forEach(function (boton) {
+          boton.addEventListener('click', function () {
+            const destino = boton.getAttribute('data-seccion');
+            if (window.mostrarSeccionPagina) window.mostrarSeccionPagina(destino);
+            abrirSidebar(false);
+            abrirPanelMas(false);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
